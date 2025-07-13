@@ -1,0 +1,6 @@
+package "yatsuna827/pk-rng-lcg32/params"
+
+fn get_mul_const() -> UInt
+fn get_add_const() -> UInt
+fn get_rev_mul_const() -> UInt
+fn get_rev_add_const() -> UInt
