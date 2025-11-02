@@ -1,19 +1,19 @@
 ///|
-pub(all) type Lcg32 UInt derive(Eq, Show)
+pub(all) struct Lcg32(UInt) derive(Eq, Show)
 
 ///|
 pub fn Lcg32::next(self : Lcg32) -> Lcg32 {
-  self.inner() * mut_const + add_const
+  self.0 * mut_const + add_const
 }
 
 ///|
 pub fn Lcg32::prev(self : Lcg32) -> Lcg32 {
-  self.inner() * rev_mul_const + rev_add_const
+  self.0 * rev_mul_const + rev_add_const
 }
 
 ///|
 pub fn Lcg32::jump(self : Lcg32, n : UInt) -> Lcg32 {
-  let mut seed = self.inner()
+  let mut seed = self.0
   let { a_t, b_t, .. } = cache.val.unwrap_or_else(setup)
   let mut i = 0
   let mut n = n
@@ -29,7 +29,7 @@ pub fn Lcg32::jump(self : Lcg32, n : UInt) -> Lcg32 {
 
 ///|
 pub fn Lcg32::jump_back(self : Lcg32, n : UInt) -> Lcg32 {
-  let mut seed = self.inner()
+  let mut seed = self.0
   let { ar_t, br_t, .. } = cache.val.unwrap_or_else(setup)
   let mut i = 0
   let mut n = n
@@ -56,7 +56,7 @@ pub fn Lcg32::iter(self : Lcg32) -> Iter[Lcg32] {
 
 ///|
 pub impl Show for Lcg32 with to_string(self : Lcg32) -> String {
-  self.inner().to_string(radix=16).to_upper().pad_start(8, '0')
+  self.0.to_string(radix=16).to_upper().pad_start(8, '0')
 }
 
 ///|
@@ -107,24 +107,24 @@ fn get_index_from_base(seed : UInt, from : UInt) -> UInt {
 }
 
 ///|
-pub fn Lcg32::get_index(self : Lcg32, from~ : UInt = 0) -> UInt {
+pub fn Lcg32::get_index(self : Lcg32, from? : UInt = 0) -> UInt {
   if from == 0 {
-    get_index_from_zero(self.inner())
+    get_index_from_zero(self.0)
   } else {
-    get_index_from_base(self.inner(), from)
+    get_index_from_base(self.0, from)
   }
 }
 
 ///|
 test "jump" {
   let lcg = Lcg32(0x08270827)
-  assert_eq(lcg.next().next().next().inner(), lcg.jump(3).inner())
-  assert_eq(lcg.prev().prev().prev().inner(), lcg.jump_back(3).inner())
+  assert_eq(lcg.next().next().next().0, lcg.jump(3).0)
+  assert_eq(lcg.prev().prev().prev().0, lcg.jump_back(3).0)
 }
 
 ///|
 test "prev" {
   let lcg = Lcg32(0xBEEFFACE)
-  assert_eq(lcg.next().prev().inner(), lcg.inner())
-  assert_eq(lcg.prev().next().inner(), lcg.inner())
+  assert_eq(lcg.next().prev().0, lcg.0)
+  assert_eq(lcg.prev().next().0, lcg.0)
 }
