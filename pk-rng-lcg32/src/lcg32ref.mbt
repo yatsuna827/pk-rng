@@ -50,7 +50,7 @@ pub fn Lcg32Ref::get_rand(self : Lcg32Ref, m? : UInt) -> UInt {
 
 ///|
 pub fn Lcg32Ref::get_rand_f(self : Lcg32Ref) -> Float {
-  self.get_rand().to_float() / 65536.0
+  Float::from_uint(self.get_rand()) / 65536.0
 }
 
 ///|
