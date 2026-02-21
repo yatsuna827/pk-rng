@@ -1,0 +1,3 @@
+import {
+  "yatsuna827/pk-rng-lcg32/params" @params,
+}
