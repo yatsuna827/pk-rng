@@ -1,5 +1,5 @@
 ///|
-pub(all) struct Lcg32Ref(Ref[Lcg32]) derive(Show)
+pub(all) struct Lcg32Ref(Ref[Lcg32]) derive(Debug)
 
 ///|
 pub fn Lcg32::to_ref(self : Lcg32) -> Lcg32Ref {

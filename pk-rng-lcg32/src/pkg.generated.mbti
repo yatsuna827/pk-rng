@@ -1,32 +1,32 @@
 // Generated using `moon info`, DON'T EDIT IT
 package "yatsuna827/pk-rng-lcg32"
 
+import {
+  "moonbitlang/core/debug",
+  "moonbitlang/core/ref",
+}
+
 // Values
 
 // Errors
 
 // Types and methods
-pub(all) struct Lcg32(UInt)
+pub(all) struct Lcg32(UInt) derive(Eq, @debug.Debug)
 pub fn Lcg32::get_index(Self, from? : UInt) -> UInt
-#deprecated
-pub fn Lcg32::inner(Self) -> UInt
 pub fn Lcg32::iter(Self) -> Iter[Self]
 pub fn Lcg32::jump(Self, UInt) -> Self
 pub fn Lcg32::jump_back(Self, UInt) -> Self
 pub fn Lcg32::next(Self) -> Self
 pub fn Lcg32::prev(Self) -> Self
 pub fn Lcg32::to_ref(Self) -> Lcg32Ref
-pub impl Eq for Lcg32
 pub impl Show for Lcg32
 
-pub(all) struct Lcg32Ref(Ref[Lcg32])
+pub(all) struct Lcg32Ref(@ref.Ref[Lcg32]) derive(@debug.Debug)
 pub fn Lcg32Ref::advance(Self, n? : UInt) -> Unit
 pub fn Lcg32Ref::back(Self, n? : UInt) -> Unit
 pub fn Lcg32Ref::get_index(Self, from? : UInt) -> UInt
 pub fn Lcg32Ref::get_rand(Self, m? : UInt) -> UInt
 pub fn Lcg32Ref::get_rand_f(Self) -> Float
-#deprecated
-pub fn Lcg32Ref::inner(Self) -> Ref[Lcg32]
 pub fn Lcg32Ref::seed(Self) -> UInt
 pub impl Show for Lcg32Ref
 

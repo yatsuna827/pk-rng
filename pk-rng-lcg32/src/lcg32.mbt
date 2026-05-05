@@ -1,5 +1,5 @@
 ///|
-pub(all) struct Lcg32(UInt) derive(Eq, Show)
+pub(all) struct Lcg32(UInt) derive(Eq, Debug)
 
 ///|
 pub fn Lcg32::next(self : Lcg32) -> Lcg32 {
@@ -51,6 +51,16 @@ pub fn Lcg32::iter(self : Lcg32) -> Iter[Lcg32] {
     lcg.advance()
     Some(val)
   })
+}
+
+///|
+test "lcg32 iter" {
+  inspect(
+    Lcg32(0).iter().take(10),
+    content=(
+      #|[00000000, 00006073, E97E7B6A, 52713895, 31B0DDE4, 8E425287, E2CCA5EE, AFC58AC9, 67DBB608, FC3351DB]
+    ),
+  )
 }
 
 ///|
