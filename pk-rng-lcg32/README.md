@@ -1,1 +1,1 @@
-# yatsuna827/pk-rng32-lcg32
+# yatsuna827/pk-rng-lcg32
