@@ -8,20 +8,12 @@ pub fn Lcg32::to_ref(self : Lcg32) -> Lcg32Ref {
 
 ///|
 pub fn Lcg32Ref::advance(self : Lcg32Ref, n? : UInt = 1) -> Unit {
-  match n {
-    0 => ()
-    1 => self.0.update(Lcg32::next)
-    n => self.0.update(lcg => lcg.jump(n))
-  }
+  self.0.update(lcg => lcg.next(n~))
 }
 
 ///|
 pub fn Lcg32Ref::back(self : Lcg32Ref, n? : UInt = 1) -> Unit {
-  match n {
-    0 => ()
-    1 => self.0.update(Lcg32::prev)
-    n => self.0.update(lcg => lcg.jump_back(n))
-  }
+  self.0.update(lcg => lcg.prev(n~))
 }
 
 ///|

@@ -2,17 +2,16 @@
 pub(all) struct Lcg32(UInt) derive(Eq, Debug)
 
 ///|
-pub fn Lcg32::next(self : Lcg32) -> Lcg32 {
-  self.0 * mut_const + add_const
+pub fn Lcg32::next(self : Lcg32, n? : UInt = 1) -> Lcg32 {
+  match n {
+    0 => self
+    1 => self.0 * mut_const + add_const
+    n => self.jump(n)
+  }
 }
 
 ///|
-pub fn Lcg32::prev(self : Lcg32) -> Lcg32 {
-  self.0 * rev_mul_const + rev_add_const
-}
-
-///|
-pub fn Lcg32::jump(self : Lcg32, n : UInt) -> Lcg32 {
+fn Lcg32::jump(self : Lcg32, n : UInt) -> Lcg32 {
   let mut seed = self.0
   let { a_t, b_t, .. } = cache.val.unwrap_or_else(setup)
   let mut i = 0
@@ -28,7 +27,16 @@ pub fn Lcg32::jump(self : Lcg32, n : UInt) -> Lcg32 {
 }
 
 ///|
-pub fn Lcg32::jump_back(self : Lcg32, n : UInt) -> Lcg32 {
+pub fn Lcg32::prev(self : Lcg32, n? : UInt = 1) -> Lcg32 {
+  match n {
+    0 => self
+    1 => self.0 * rev_mul_const + rev_add_const
+    n => self.jump_back(n)
+  }
+}
+
+///|
+fn Lcg32::jump_back(self : Lcg32, n : UInt) -> Lcg32 {
   let mut seed = self.0
   let { ar_t, br_t, .. } = cache.val.unwrap_or_else(setup)
   let mut i = 0
