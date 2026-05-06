@@ -1,0 +1,6 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.mbt": "${capture}_test.mbt,${capture}_wbtest.mbt"
+  }
+}

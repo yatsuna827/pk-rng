@@ -1,0 +1,12 @@
+import {
+  "moonbitlang/core/builtin",
+  "moonbitlang/core/string",
+  "moonbitlang/async",
+  "moonbitlang/async/stdio",
+  "yatsuna827/pk_rng_lcg32_cli/lib",
+  "mizchi/admiral",
+}
+
+options(
+  "is-main": true,
+)

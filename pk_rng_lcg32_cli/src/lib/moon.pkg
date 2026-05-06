@@ -1,0 +1,4 @@
+import {
+  "yatsuna827/pk-rng-lcg32" @lcg32,
+  "moonbitlang/core/string" @string,
+}
