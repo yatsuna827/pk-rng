@@ -66,7 +66,7 @@ lcg32
 seed値を指定回数進める。負の値を指定した場合は戻る（`prev`と同等）。
 
 ```
-lcg32 next <SEED> <COUNT> [OPTIONS]
+lcg32 next <SEED> <N> [OPTIONS]
 ```
 
 #### 位置引数
@@ -74,7 +74,7 @@ lcg32 next <SEED> <COUNT> [OPTIONS]
 | 引数 | 説明 | 必須 |
 |------|------|------|
 | `SEED` | 進める対象のseed値（hex） | ✓ |
-| `COUNT` | 進める回数（負の値で戻る） | ✓ |
+| `N` | 進める回数（負の値で戻る） | ✓ |
 
 #### 使用例
 
@@ -96,7 +96,7 @@ $ lcg32 next 0xDEADBEEF 100 --prefix
 seed値を指定回数戻す。
 
 ```
-lcg32 prev <SEED> <COUNT> [OPTIONS]
+lcg32 prev <SEED> <N> [OPTIONS]
 ```
 
 #### 位置引数
@@ -104,7 +104,7 @@ lcg32 prev <SEED> <COUNT> [OPTIONS]
 | 引数 | 説明 | 必須 |
 |------|------|------|
 | `SEED` | 戻す対象のseed値（hex） | ✓ |
-| `COUNT` | 戻す回数 | ✓ |
+| `N` | 戻す回数 | ✓ |
 
 #### 使用例
 
@@ -159,7 +159,7 @@ $ lcg32 index DEADBEEF --from 12345678
 seed値から連続したseedを列挙する。
 
 ```
-lcg32 list <SEED> <COUNT> [OPTIONS]
+lcg32 list <SEED> <N> [OPTIONS]
 ```
 
 #### 位置引数
@@ -167,7 +167,7 @@ lcg32 list <SEED> <COUNT> [OPTIONS]
 | 引数 | 説明 | 必須 |
 |------|------|------|
 | `SEED` | 開始seed値（hex） | ✓ |
-| `COUNT` | 出力する件数 | ✓ |
+| `N` | 出力する件数 | ✓ |
 
 #### オプション
 
@@ -290,8 +290,8 @@ $ lcg32 randf 00000000
 |-----------|------------------|
 | seed値が不正な形式 | `Invalid seed format: "xyz"` |
 | seed値が範囲外（8桁超過） | `Seed value out of range: "123456789"` |
-| 必須引数の不足 | `Missing required argument: <COUNT>` |
-| 回数が負の値（`prev`, `list`） | `Count must be a positive integer` |
+| 必須引数の不足 | `Missing required argument: <N>` |
+| 回数が負の値（`prev`, `list`） | `N must be a positive integer` |
 
 ---
 

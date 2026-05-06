@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "yatsuna827/pk_rng_lcg32_cli/lib"
+
+// Values
+pub fn cmd_index(UInt, UInt) -> String
+
+pub fn cmd_list(UInt, UInt, prefix? : Bool, separator? : String) -> String
+
+pub fn cmd_next(UInt, Int, prefix? : Bool) -> String
+
+pub fn cmd_prev(UInt, Int, prefix? : Bool) -> String
+
+pub fn cmd_rand(UInt, modulo? : UInt?, hex? : Bool) -> String
+
+pub fn cmd_randf(UInt) -> String
+
+pub fn format_seed(UInt, prefix? : Bool) -> String
+
+pub fn parse_seed(String) -> Result[UInt, String]
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+
